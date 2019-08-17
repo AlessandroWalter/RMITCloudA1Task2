@@ -1,4 +1,4 @@
-<form action="register.php">
+<form method = "post" action="register.php">
     <h2>Register</h2>
     <div class="container">
         <label for="usern"><b>Username</b></label>
@@ -6,7 +6,7 @@
                required data-errormessage-value-missing="User name or password cannot be empty">
 
         <label for="passw"><b>Password</b></label>
-        <input type="text" placeholder="Enter Password" name="password"
+        <input type="password" placeholder="Enter Password" name="password"
                required data-errormessage-value-missing="User name or password cannot be empty">
 
         <button type="submit">Register</button>
@@ -17,13 +17,12 @@
 #$handle = fopen('gs://a1-2-user_storage/user_Credentials.txt','w');
 #fwrite($handle, $_POST["username"]);
 #fclose($handle);
-
 if(isset($_POST['username']) && isset($_POST['password'])) {
-    $data = $_POST['username'] . '-' . $_POST['password'] . "\r\n";
+    $data = $_POST['username'] . '|' . $_POST['password'] . "\r\n";
     #$ret = file_put_contents('/tmp/mydata.txt', $data, FILE_APPEND | LOCK_EX);
-    $handle = fopen('gs://a1-2-user_storage/user_Credentials.txt','w');
+    $handle = fopen('gs://a1-2-user_storage/user_Credentials.txt','a');
     fwrite($handle, $data);
     fclose($handle);
-    echo "User credentials saved";
+    echo $_POST['username'] . $_POST['password'];
 }
 ?>
