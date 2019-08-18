@@ -4,5 +4,7 @@ api_version: 1
 handlers:
 - url: /
   script: login.php
+- url: /login.php
+  script: login.php
 - url: /register.php
   script: register.php
