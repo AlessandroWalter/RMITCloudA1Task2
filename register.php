@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['username']) && isset($_POST['password'])) {
-    $user_entry = $_POST['username'] . '|' . $_POST['password'] . "\r\n";
+    $user_entry = $_POST['username'] . '|' . $_POST['password'] . "~";
 
-    $entries = explode("\n",
+    $entries = explode(PHP_EOL,
         file_get_contents('gs://a1-2-users/users.txt')
     );
 

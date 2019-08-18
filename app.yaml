@@ -8,3 +8,5 @@ handlers:
   script: login.php
 - url: /register.php
   script: register.php
+- url: /main.php
+  script: main.php

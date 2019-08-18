@@ -1,22 +1,14 @@
 <?php
-if(isset($_POST['username']) && isset($_POST['password'])) {
-
-    $user_entry = $_POST['username'] . '|' . $_POST['password'];
-
-    $entries = explode("~",
-        file_get_contents('gs://a1-2-users/users.txt')
-    );
-
-    $exists = false;
-    $exists = in_array($user_entry, $entries);
-
-    if($exists==true){
-        header("location: main.php");
-    }
-}
+/**
+ * Created by IntelliJ IDEA.
+ * User: AlCappuccino
+ * Date: 18.08.2019
+ * Time: 16:42
+ */
 ?>
-<form method = "post" action="login.php">
-    <h2>Login</h2>
+
+<form method = "post" action="main.php">
+    <h2>Main</h2>
     <div class="container">
         <label for="username"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="username" required>
