@@ -13,6 +13,9 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     if($exists==true){
         header("location: main.php");
     }
+    else{
+        echo "User name or password is invalid";
+    }
 }
 ?>
 <form method = "post" action="login.php">
