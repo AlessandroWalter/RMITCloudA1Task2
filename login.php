@@ -24,11 +24,14 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     <h2>Login</h2>
     <div class="container">
         <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+        <input class="form-control" type="text" name="username" required="" placeholder="Enter Username"
+               oninvalid="this.setCustomValidity('User name or password cannot be empty')"
+               oninput="setCustomValidity('')">
 
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password"
-               required data-errormessage-value-missing="User name or password cannot be empty">
+        <input class="form-control" type="password" name="password" required="" placeholder="Enter Password"
+               oninvalid="this.setCustomValidity('User name or password cannot be empty')"
+               oninput="setCustomValidity('')">
 
         <button type="submit">Login</button>
         <p><a href="register.php">Register</a></p>
