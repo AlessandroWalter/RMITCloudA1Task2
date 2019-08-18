@@ -1,6 +1,10 @@
 <?php
-if(isset($_POST['username']) && isset($_POST['password'])) {
 
+$handle = fopen('gs://a1-2-users/current_user.txt','w');
+fwrite($handle, "");
+fclose($handle);
+
+if(isset($_POST['username']) && isset($_POST['password'])) {
     $user_entry = $_POST['username'] . '|' . $_POST['password'];
 
     $entries = explode("~",
@@ -13,6 +17,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     if($exists==true){
         $handle = fopen('gs://a1-2-users/current_user.txt','w');
         fwrite($handle, $_POST['username']);
+        fclose($handle);
         header("location: main.php");
     }
     else{
