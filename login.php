@@ -11,6 +11,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     $exists = in_array($user_entry, $entries);
 
     if($exists==true){
+        $handle = fopen('gs://a1-2-users/current_user.txt','w');
+        fwrite($handle, $_POST['username']);
         header("location: main.php");
     }
     else{
