@@ -14,15 +14,23 @@
 </form>
 
 <?php
-#$handle = fopen('gs://a1-2-user_storage/user_Credentials.txt','w');
-#fwrite($handle, $_POST["username"]);
-#fclose($handle);
 if(isset($_POST['username']) && isset($_POST['password'])) {
-    $data = $_POST['username'] . '|' . $_POST['password'] . "\r\n";
-    #$ret = file_put_contents('/tmp/mydata.txt', $data, FILE_APPEND | LOCK_EX);
-    $handle = fopen('gs://a1-2-user_storage/user_Credentials.txt','a');
-    fwrite($handle, $data);
-    fclose($handle);
+    $user_entry = $_POST['username'] . '|' . $_POST['password'] . "\r\n";
+
+    $entries = explode("\n",
+        file_get_contents('gs://a1-2-users/users.txt')
+    );
+
+    array_push($entries, $user_entry);
+    $isWritten = file_put_contents('gs://a1-2-users/users.txt',
+        $entries);
+
+    if($isWritten === false) {
+       die('Writing credentials to file failed');
+    }
+    else {
+       echo "Writing credentials to file succeeded";
+    }
     echo $_POST['username'] . $_POST['password'];
 }
 ?>
