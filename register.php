@@ -2,12 +2,14 @@
     <h2>Register</h2>
     <div class="container">
         <label for="usern"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username"
-               required data-errormessage-value-missing="User name or password cannot be empty">
+        <input class="form-control" type="text" name="username" required="" placeholder="Username"
+               oninvalid="this.setCustomValidity('User name or password cannot be empty')"
+               oninput="setCustomValidity('')">
 
         <label for="passw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password"
-               required data-errormessage-value-missing="User name or password cannot be empty">
+        <input class="form-control" type="password" name="password" required="" placeholder="Password"
+               oninvalid="this.setCustomValidity('User name or password cannot be empty')"
+               oninput="setCustomValidity('')">
 
         <button type="submit">Register</button>
     </div>
